@@ -117,17 +117,20 @@ func main() {
 
 	errE := engine.Init()
 	if errE != nil {
-		log.Fatal(errE)
+		log.Print(errE)
+		return
 	}
 	defer engine.Close()
 
 	errE = engine.Put([]byte("abcd"), []byte("xxx"))
 	if errE != nil {
-		log.Fatal(errE)
+		log.Print(errE)
+		return
 	}
 
 	errE = engine.Put([]byte("abcf"), make([]byte, 3*1024*1024*1024))
 	if errE != nil {
-		log.Fatal(errE)
+		log.Print(errE)
+		return
 	}
 }
